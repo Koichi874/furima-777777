@@ -22,8 +22,8 @@ class User < ApplicationRecord
   end
 
   with_options presence: true do
-    validates :nickname, presence: true
-    validates :birth_day, presence: true
+    validates :nickname
+    validates :birth_day
   end
 
 end
