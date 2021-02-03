@@ -34,14 +34,14 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def destroy
-    # if user_signed_in? && current_user.id == @item.user.id
-      # @item.destroy
-      # redirect_to root_path
-    # else
-      # render :show
-    # end
-  # end
+  def destroy
+    if user_signed_in? && current_user.id == @item.user.id
+      @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
 
   private
 
@@ -57,4 +57,4 @@ class ItemsController < ApplicationController
   def correct_user
     redirect_to root_path if current_user.id != @item.user.id || @item.order.present?
   end
-# end
+end
