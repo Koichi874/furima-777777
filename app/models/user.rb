@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
-  has_many :orders
+  # has_many :orders
 
   PASSWORD_REGEX = /\A(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true,
