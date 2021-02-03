@@ -23,25 +23,25 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @item.update(item_params)
-      redirect_to action: :show
-    else
-      render :edit
-    end
-  end
+  # def update
+    # if @item.update(item_params)
+      # redirect_to action: :show
+    # else
+      # render :edit
+    # end
+  # end
 
-  def destroy
-    if user_signed_in? && current_user.id == @item.user.id
-      @item.destroy
-      redirect_to root_path
-    else
-      render :show
-    end
-  end
+  # def destroy
+    # if user_signed_in? && current_user.id == @item.user.id
+      # @item.destroy
+      # redirect_to root_path
+    # else
+      # render :show
+    # end
+  # end
 
   private
 
@@ -57,4 +57,4 @@ class ItemsController < ApplicationController
   def correct_user
     redirect_to root_path if current_user.id != @item.user.id || @item.order.present?
   end
-end
+# end
