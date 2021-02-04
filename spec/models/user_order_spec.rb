@@ -14,7 +14,7 @@ RSpec.describe UserOrder, type: :model do
       end
 
       it 'postal_code, area-id, city, house_number, phone_number, tokenが存在すれば登録できる' do
-        @user_order.building_name = ''
+        @user_order.building_name = nil
         expect(@user_order).to be_valid
       end
     end
@@ -72,6 +72,12 @@ RSpec.describe UserOrder, type: :model do
         @user_order.phone_number = '090-1234-5678'
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include('Phone number is not a number')
+      end
+
+      it 'phone_numberに全角数字があると登録できない' do
+        @user_order.phone_number = '０９０ー１２３４ー５６７８'
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Phone number is not a number")
       end
 
       it 'tokenが空だと登録できない' do
