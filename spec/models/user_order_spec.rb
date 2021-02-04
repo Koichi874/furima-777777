@@ -80,6 +80,12 @@ RSpec.describe UserOrder, type: :model do
         expect(@user_order.errors.full_messages).to include("Phone number is not a number")
       end
 
+      it 'phone_numberが英数混合では登録できない' do
+        @user_order.phone_number = 'a90-b234-c678'
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Phone number is not a number")
+      end
+
       it 'tokenが空だと登録できない' do
         @user_order.token = ''
         @user_order.valid?
