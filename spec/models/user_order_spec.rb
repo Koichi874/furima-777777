@@ -39,7 +39,7 @@ RSpec.describe UserOrder, type: :model do
       end
 
       it 'area_idが0では登録できない' do
-        @user_order.area_id = '0'
+        @user_order.area_id = 0
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Area must be other than 0")
       end
